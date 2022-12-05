@@ -52,35 +52,35 @@ for i in MarkerPos:
 # Playing of audio track (first 10 seconds)
 
 TimeStart = 0
-TimeEnd = 10
+TimeEnd = 30
 sd.play(AudioLoad[int(SampleRate*TimeStart):SampleRate*TimeEnd],samplerate=SampleRate)
 
 # And draw a time indicator updated every second
-# StartTime = time.time()
-# interval = 1
-# PlayBar = SoundAx.axvline(TimeStart,color='red')
+StartTime = time.time()
+interval = 1
+PlayBar = SoundAx.axvline(TimeStart,color='red')
 
-# for i in range(TimeStart+1,TimeEnd+1):
-#     time.sleep(StartTime + i*interval - time.time())
-#     #SoundAx.lines[-1].remove()
-#     #SoundAx.axvline(i,color='red')
+for i in range(TimeStart+1,TimeEnd+1):
+    time.sleep(StartTime + i*interval - time.time())
+    SoundAx.lines[-1].remove()
+    SoundAx.axvline(i,color='red')
 #     PlayBar.set_xdata(i)
-#     plt.gcf().canvas.draw()
-#     plt.gcf().canvas.flush_events()
+    plt.gcf().canvas.draw()
+    plt.gcf().canvas.flush_events()
 #     #display(SoundFig)
 #     #clear_output(wait = True)
-#     print(i,' s')
-#     #plt.pause(1)
+    print(i,' s')
+#     plt.pause(1)
 
-# plt.show()
+plt.show()
 
 # interval = 1
-PlayBar = SoundAx.axvline(TimeStart,color='red')
-def updatePlayBar(pos):
-    PlayBar.set_xdata(pos)
-    return PlayBar
+# PlayBar = SoundAx.axvline(TimeStart,color='red')
+# def updatePlayBar(pos):
+#     PlayBar.set_xdata(pos)
+#     return PlayBar
 
 
-PlayAnimation = animation.FuncAnimation(SoundFig,updatePlayBar,frames = range(TimeStart+1,TimeEnd+1), interval=1)
-PlayBar = SoundAx.axvline(TimeStart,color='red')
-plt.show()
+# PlayAnimation = animation.FuncAnimation(SoundFig,updatePlayBar,frames = range(TimeStart+1,TimeEnd+1), interval=1)
+# PlayBar = SoundAx.axvline(TimeStart,color='red')
+#plt.show()
